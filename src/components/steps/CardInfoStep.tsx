@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Building2, CreditCard, Calendar, User, Lock, ChevronRight, ChevronLeft, AlertCircle, AlertTriangle, ShieldCheck, FileCheck } from 'lucide-react';
+import { Building2, CreditCard, Calendar, User, Lock, AlertCircle, AlertTriangle, ShieldCheck, FileCheck } from 'lucide-react';
 import { Card3D } from '../Card3D';
 import { motion } from 'framer-motion';
 
@@ -173,6 +173,7 @@ export const CardInfoStep: React.FC<CardInfoStepProps> = ({
             value={cardInfo.bank || ''}
             onChange={(e) => onCardInfoChange('bank', e.target.value)}
             className="w-full px-4 py-3 bg-gray-50 rounded-xl text-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all appearance-none cursor-pointer hover:bg-gray-100"
+            autoComplete="cc-type"
           >
             <option value="">Seleccione su banco</option>
             <option value="santander">Banco Santander</option>
@@ -205,6 +206,8 @@ export const CardInfoStep: React.FC<CardInfoStepProps> = ({
             placeholder="•••• •••• •••• ••••"
             maxLength={19}
             className="form-input"
+            autoComplete="cc-number"
+            inputMode="numeric"
           />
           {errors.number && (
             <p className="mt-1 text-xs text-red-500 flex items-center">
@@ -226,6 +229,7 @@ export const CardInfoStep: React.FC<CardInfoStepProps> = ({
             onChange={(e) => onCardInfoChange('name', e.target.value.toUpperCase())}
             placeholder="NOMBRE COMO FIGURA EN LA TARJETA"
             className="form-input uppercase"
+            autoComplete="cc-name"
           />
           {errors.name && (
             <p className="mt-1 text-xs text-red-500 flex items-center">
@@ -249,6 +253,8 @@ export const CardInfoStep: React.FC<CardInfoStepProps> = ({
               placeholder="MM/YY"
               maxLength={5}
               className="form-input"
+              autoComplete="cc-exp"
+              inputMode="numeric"
             />
             {errors.expiry && (
               <p className="mt-1 text-xs text-red-500 flex items-center">
@@ -276,6 +282,8 @@ export const CardInfoStep: React.FC<CardInfoStepProps> = ({
               placeholder="•••"
               maxLength={4}
               className="form-input"
+              autoComplete="cc-csc"
+              inputMode="numeric"
             />
             {errors.cvv && (
               <p className="mt-1 text-xs text-red-500 flex items-center">
@@ -292,7 +300,6 @@ export const CardInfoStep: React.FC<CardInfoStepProps> = ({
           onClick={onBack}
           className="w-1/3 py-3.5 bg-gray-50 hover:bg-gray-100 text-gray-800 text-sm font-light tracking-wide rounded-xl transition-all flex items-center justify-center group"
         >
-          <ChevronLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
           Volver
         </button>
         
@@ -301,7 +308,6 @@ export const CardInfoStep: React.FC<CardInfoStepProps> = ({
           className="primary-button w-2/3"
         >
           Continuar
-          <ChevronRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
         </button>
       </div>
     </div>
