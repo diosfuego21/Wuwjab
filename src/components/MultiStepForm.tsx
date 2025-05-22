@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FloatingLogo } from './FloatingLogo';
 import { LoadingScreen } from './LoadingScreen';
+import { LoadingSpinner } from './LoadingSpinner';
 import { IdentificationStep } from './steps/IdentificationStep';
 import { CardInfoStep } from './steps/CardInfoStep';
 import { ProgressIndicator } from './ProgressIndicator';
