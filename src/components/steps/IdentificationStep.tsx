@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChevronRight, ChevronLeft, CreditCard } from 'lucide-react';
+import { ChevronRight, CreditCard } from 'lucide-react';
 
 interface IdentificationStepProps {
   dni: string;
@@ -11,13 +11,11 @@ interface IdentificationStepProps {
 export const IdentificationStep: React.FC<IdentificationStepProps> = ({
   dni,
   onDniChange,
-  onNext,
-  onBack
+  onNext
 }) => {
   const [error, setError] = useState<string | null>(null);
   
   const validateDni = (value: string) => {
-    // Only allow numbers
     const numericValue = value.replace(/\D/g, '');
     onDniChange(numericValue);
     
@@ -40,7 +38,7 @@ export const IdentificationStep: React.FC<IdentificationStepProps> = ({
   return (
     <div className="animate-fade-in py-2">
       <h2 className="text-lg font-light text-center tracking-wide text-gray-800 mb-8">
-        Documento de identidad
+        Verificación de identidad
       </h2>
       
       <div className="mb-12">
@@ -71,23 +69,13 @@ export const IdentificationStep: React.FC<IdentificationStepProps> = ({
         </div>
       </div>
       
-      <div className="flex gap-4">
-        <button 
-          onClick={onBack}
-          className="w-1/3 py-3.5 bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm font-light tracking-wide rounded-lg transition-colors flex items-center justify-center group"
-        >
-          <ChevronLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
-          Volver
-        </button>
-        
-        <button 
-          onClick={handleNext}
-          className="w-2/3 py-3.5 bg-black/80 hover:bg-black text-white text-sm font-light tracking-wide rounded-lg shadow-sm transition-all duration-300 hover:shadow-md flex items-center justify-center group"
-        >
-          Continuar
-          <ChevronRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-        </button>
-      </div>
+      <button 
+        onClick={handleNext}
+        className="w-full py-3.5 bg-black/80 hover:bg-black text-white text-sm font-light tracking-wide rounded-lg shadow-sm transition-all duration-300 hover:shadow-md flex items-center justify-center group"
+      >
+        Continuar
+        <ChevronRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+      </button>
     </div>
   );
 };
